@@ -1,0 +1,30 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+        int carry=0;//進位
+        ListNode* fake=new ListNode();//創建一個新的listnode 頭節點，不存資料，僅拿來找串列開頭
+        ListNode* now=fake;//存現在指到哪
+        while(l1!=nullptr||l2!=nullptr||carry>0){
+            int x=(l1!=nullptr)?l1->val:0;//如果他不是空的指標就加上數字，如果是空的當作0去加
+            int y=(l2!=nullptr)?l2->val:0;//same
+            int sum=x+y+carry;
+            carry=sum/10;//大於10的+到carry
+            sum%=10;//沒有的一樣放回sum
+            if(l1!=nullptr)l1=l1->next;//等於他下一個指到的
+            if(l2!=nullptr)l2=l2->next;
+            now->next=new ListNode(sum);//創建一個新的node到下一個點
+            now=now->next;//把now移到下一個點
+        }
+        return fake->next;
+    }
+};
