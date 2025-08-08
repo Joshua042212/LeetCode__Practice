@@ -1,0 +1,17 @@
+1.class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        unordered_map<int,int> search;
+        for(int i=0;i<nums.size();i++) {
+            int num_to_find=target-nums[i];
+            if(search.count(num_to_find))//如果這個要找的數字已經有在unordered_map裡
+            {
+                return{i,search[num_to_find]};
+            }
+            else{
+                search[nums[i]]=i;
+            }
+        }
+        return{};
+    }
+};
