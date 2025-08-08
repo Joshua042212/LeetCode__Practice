@@ -9,9 +9,11 @@ public:
                 return{i,search[num_to_find]};
             }
             else{
-                search[nums[i]]=i;
+                search[nums[i]]=i;//把這個數字加到unodered_map裡，之後有看到它需要的數字時就可以立即找到
             }
         }
         return{};
     }
 };
+這題讓我發現可以用不同的方式去尋找要的數字，這樣只要O(n)
+本來我只會用O(n^2)的方法寫
